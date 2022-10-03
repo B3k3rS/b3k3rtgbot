@@ -10,7 +10,6 @@ mongoose.connect("mongodb+srv://B3k3r:knt112sp@b3k3rbot.vjoqy63.mongodb.net/?ret
 const Para = mongoose.model('para_schema')
 const AlertM = mongoose.model('alert_schema')
 
-const token = "5744262434:AAG2aojYQd6f9tgjgDeo3ArodIVkW2V8fZg";
 const bot = new TelegramApi(token, {polling: true});
 
 const zvonki =
