@@ -3,12 +3,13 @@ const mongoose = require('mongoose')
 require('./model/para.model')
 require('./model/alert.model')
 
-mongoose.connect("mongodb+srv://B3k3r:knt112sp@b3k3rbot.vjoqy63.mongodb.net/?retryWrites=true&w=majority")
+mongoose.connect(mongo_url)
 .then(() => console.log('connected'))
 .catch((err) => console.log(err))
 
 const Para = mongoose.model('para_schema')
 const AlertM = mongoose.model('alert_schema')
+
 
 const bot = new TelegramApi(token, {polling: true});
 
@@ -291,7 +292,7 @@ function pariNow(chatid) {
     date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
     date_start_year = new Date("2022-09-26")
     week = Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7)
-
+    console.log(now_date.getHours())
     if (
         now_date.getHours() < alert_zvonki[0][0] || now_date.getHours() == alert_zvonki[0][0] && now_date.getMinutes() < alert_zvonki[0][0]
     ) {
