@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 require('./model/para.model')
 require('./model/alert.model')
 
+const mongo_url = `mongodb+srv://B3k3r:knt112sp@b3k3rbot.vjoqy63.mongodb.net/?retryWrites=true&w=majority`
+
 mongoose.connect(mongo_url)
 .then(() => console.log('connected'))
 .catch((err) => console.log(err))
