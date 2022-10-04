@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 require('./model/para.model')
 require('./model/alert.model')
 
+
+const token = `5744262434:AAG2aojYQd6f9tgjgDeo3ArodIVkW2V8fZg`;
 const mongo_url = `mongodb+srv://B3k3r:knt112sp@b3k3rbot.vjoqy63.mongodb.net/?retryWrites=true&w=majority`
 
 mongoose.connect(mongo_url)
