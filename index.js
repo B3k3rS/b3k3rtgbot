@@ -48,26 +48,43 @@ bot.on('message', async msg => {
     console.log(msg)
     try{
         switch(text.split('|')[0]) {
-            case '/start' || '/start@b3k3rBot':
+            case '/start':
                 bot.sendMessage(chatId,'Ну давай поговорим')
                 break;
-            case '/info' || '/info@b3k3rBot':
+            case '/start@b3k3rBot':
+                bot.sendMessage(chatId,'Ну давай поговорим')
+                break;
+            case '/info':
                 bot.sendMessage(chatId,`Автор бота: @aleksandrnyz\n\nДоступные команды:\n/tod - Выводит расписание пар на сегодня\n/tom - Выводит расписание пар на завтра\n/now - Выводит инфу о паре, которая сейчас идёт\n/mon,/tue и тд. - вывод расписание по интересующему дню`)
                 break;
-            case '/tod@b3k3rBot' || '/tod':
+            case '/info@b3k3rBot':
+                bot.sendMessage(chatId,`Автор бота: @aleksandrnyz\n\nДоступные команды:\n/tod - Выводит расписание пар на сегодня\n/tom - Выводит расписание пар на завтра\n/now - Выводит инфу о паре, которая сейчас идёт\n/mon,/tue и тд. - вывод расписание по интересующему дню`)
+                break;
+            case '/tod@b3k3rBot':
                 td = new Date()
                 getParaByQuery(chatId,{dayofweek:td.getDay()})
                 break;
-            case '/tom' || '/tom@b3k3rBot':
+            case '/tod':
+                td = new Date()
+                getParaByQuery(chatId,{dayofweek:td.getDay()})
+                break;
+            case '/tom':
                 tm = new Date()
                 getParaByQuery(chatId,{dayofweek:tm.getDay()+1})
                 break;
-            case '/now' || '/now@b3k3rBot':
+            case '/tom@b3k3rBot':
+                tm = new Date()
+                getParaByQuery(chatId,{dayofweek:tm.getDay()+1})
+                break;
+            case '/now':
+                pariNow(chatId)
+                break;
+            case '/now@b3k3rBot':
                 pariNow(chatId)
                 break;
 
             // Дни недели
-            case '/mon' || '/mon@b3k3rBot':
+            case '/mon':
                 now_date = new Date();
                 date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
                 date_start_year = new Date("2022-09-26")
@@ -79,7 +96,7 @@ bot.on('message', async msg => {
                     getParaByQuery(chatId,{dayofweek:1,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7+1)%2==0 ? true : false })
                 }                
                 break;
-            case '/tue' || '/tue@b3k3rBot':
+            case '/tue':
                 now_date = new Date();
                 date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
                 date_start_year = new Date("2022-09-26")
@@ -91,7 +108,7 @@ bot.on('message', async msg => {
                     getParaByQuery(chatId,{dayofweek:2,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7+1)%2==0 ? true : false })
                 }    
                 break;
-            case '/wed' || '/wed@b3k3rBot':
+            case '/wed':
                 now_date = new Date();
                 date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
                 date_start_year = new Date("2022-09-26")
@@ -103,7 +120,7 @@ bot.on('message', async msg => {
                     getParaByQuery(chatId,{dayofweek:3,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7+1)%2==0 ? true : false })
                 }    
                 break;
-            case '/thu' || '/thu@b3k3rBot':
+            case '/thu':
                 now_date = new Date();
                 date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
                 date_start_year = new Date("2022-09-26")
@@ -115,7 +132,8 @@ bot.on('message', async msg => {
                     getParaByQuery(chatId,{dayofweek:4,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7+1)%2==0 ? true : false })
                 }    
                 break;
-            case '/fri' || '/fri@b3k3rBot':
+            case '/fri':
+                
                 now_date = new Date();
                 date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
                 date_start_year = new Date("2022-09-26")
@@ -127,15 +145,79 @@ bot.on('message', async msg => {
                     getParaByQuery(chatId,{dayofweek:5,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7+1)%2==0 ? true : false })
                 }    
                 break;
-            
+            case '/mon@b3k3rBot':
+                now_date = new Date();
+                date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
+                date_start_year = new Date("2022-09-26")
+
+                if (now_date.getDay() <= 1) {
+                    getParaByQuery(chatId,{dayofweek:1,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7)%2==0 ? true : false })
+                }
+                else {
+                    getParaByQuery(chatId,{dayofweek:1,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7+1)%2==0 ? true : false })
+                }                
+                break;
+            case '/tue@b3k3rBot':
+                now_date = new Date();
+                date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
+                date_start_year = new Date("2022-09-26")
+
+                if (now_date.getDay() <= 2) {
+                    getParaByQuery(chatId,{dayofweek:2,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7)%2==0 ? true : false })
+                }
+                else {
+                    getParaByQuery(chatId,{dayofweek:2,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7+1)%2==0 ? true : false })
+                }    
+                break;
+            case '/wed@b3k3rBot':
+                now_date = new Date();
+                date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
+                date_start_year = new Date("2022-09-26")
+
+                if (now_date.getDay() <= 3) {
+                    getParaByQuery(chatId,{dayofweek:3,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7)%2==0 ? true : false })
+                }
+                else {
+                    getParaByQuery(chatId,{dayofweek:3,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7+1)%2==0 ? true : false })
+                }    
+                break;
+            case '/thu@b3k3rBot':
+                now_date = new Date();
+                date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
+                date_start_year = new Date("2022-09-26")
+
+                if (now_date.getDay() <= 4) {
+                    getParaByQuery(chatId,{dayofweek:4,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7)%2==0 ? true : false })
+                }
+                else {
+                    getParaByQuery(chatId,{dayofweek:4,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7+1)%2==0 ? true : false })
+                }    
+                break;
+            case '/fri@b3k3rBot':
+                now_date = new Date();
+                date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
+                date_start_year = new Date("2022-09-26")
+
+                if (now_date.getDay() <= 5) {
+                    getParaByQuery(chatId,{dayofweek:5,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7)%2==0 ? true : false })
+                }
+                else {
+                    getParaByQuery(chatId,{dayofweek:5,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7+1)%2==0 ? true : false })
+                }    
+                break;
             // Уведомления
-            case '/alerton' || '/alerton@b3k3rBot':
+            case '/alerton':
                 onAlertChat(chatId)
-                break; 
-            case '/alertoff' || '/alertoff@b3k3rBot':
+                break;
+            case '/alerton@b3k3rBot':
+                onAlertChat(chatId)
+                break;  
+            case '/alertoff':
                 offAlertChat(chatId)
                 break;
-
+            case '/alertoff@b3k3rBot':
+                offAlertChat(chatId)
+                break;
             //админ тема
             case '/import':
                 if (msg.from.id != '607387456' && msg.from.id != '364295032') {
@@ -314,6 +396,9 @@ function pariNow(chatid) {
                 now_date.getHours()+3 == zvonki[i][2] && now_date.getMinutes() < zvonki[i][3] 
             ) {
                 getParaByQuery(chatid,{dayofweek:now_date.getDay(), counter:i+1})
+            }
+            else {
+                bot.sendMessage(chatid, "Перемена, зачилься")
             }
         }
     }
