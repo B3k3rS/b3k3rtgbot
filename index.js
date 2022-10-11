@@ -47,26 +47,26 @@ bot.on('message', async msg => {
     const chatId = msg.chat.id;
     try{
         switch(text.split('|')[0]) {
-            case '/start':
+            case '/start' || '/start@b3k3rBot':
                 bot.sendMessage(chatId,'Ну давай поговорим')
                 break;
-            case '/info':
+            case '/info' || '/info@b3k3rBot':
                 bot.sendMessage(chatId,`Автор бота: @aleksandrnyz\n\nДоступные команды:\n/tod - Выводит расписание пар на сегодня\n/tom - Выводит расписание пар на завтра\n/now - Выводит инфу о паре, которая сейчас идёт\n/mon,/tue и тд. - вывод расписание по интересующему дню`)
                 break;
-            case '/tod':
+            case '/tod' || '/tod@b3k3rBot':
                 td = new Date()
                 getParaByQuery(chatId,{dayofweek:td.getDay()})
                 break;
-            case '/tom':
+            case '/tom' || '/tom@b3k3rBot':
                 tm = new Date()
                 getParaByQuery(chatId,{dayofweek:tm.getDay()+1})
                 break;
-            case '/now':
+            case '/now' || '/now@b3k3rBot':
                 pariNow(chatId)
                 break;
 
             // Дни недели
-            case '/mon':
+            case '/mon' || '/mon@b3k3rBot':
                 now_date = new Date();
                 date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
                 date_start_year = new Date("2022-09-26")
@@ -78,7 +78,7 @@ bot.on('message', async msg => {
                     getParaByQuery(chatId,{dayofweek:1,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7+1)%2==0 ? true : false })
                 }                
                 break;
-            case '/tue':
+            case '/tue' || '/tue@b3k3rBot':
                 now_date = new Date();
                 date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
                 date_start_year = new Date("2022-09-26")
@@ -90,7 +90,7 @@ bot.on('message', async msg => {
                     getParaByQuery(chatId,{dayofweek:2,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7+1)%2==0 ? true : false })
                 }    
                 break;
-            case '/wed':
+            case '/wed' || '/wed@b3k3rBot':
                 now_date = new Date();
                 date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
                 date_start_year = new Date("2022-09-26")
@@ -102,7 +102,7 @@ bot.on('message', async msg => {
                     getParaByQuery(chatId,{dayofweek:3,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7+1)%2==0 ? true : false })
                 }    
                 break;
-            case '/thu':
+            case '/thu' || '/thu@b3k3rBot':
                 now_date = new Date();
                 date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
                 date_start_year = new Date("2022-09-26")
@@ -114,7 +114,7 @@ bot.on('message', async msg => {
                     getParaByQuery(chatId,{dayofweek:4,numerator: Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7+1)%2==0 ? true : false })
                 }    
                 break;
-            case '/fri':
+            case '/fri' || '/fri@b3k3rBot':
                 now_date = new Date();
                 date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
                 date_start_year = new Date("2022-09-26")
@@ -128,10 +128,10 @@ bot.on('message', async msg => {
                 break;
             
             // Уведомления
-            case '/alerton':
+            case '/alerton' || '/alerton@b3k3rBot':
                 onAlertChat(chatId)
-                break;
-            case '/alertoff':
+                break; 
+            case '/alertoff' || '/alertoff@b3k3rBot':
                 offAlertChat(chatId)
                 break;
 
