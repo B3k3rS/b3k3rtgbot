@@ -54,7 +54,7 @@ bot.on('message', async msg => {
             case '/info' || '/info@b3k3rBot':
                 bot.sendMessage(chatId,`Автор бота: @aleksandrnyz\n\nДоступные команды:\n/tod - Выводит расписание пар на сегодня\n/tom - Выводит расписание пар на завтра\n/now - Выводит инфу о паре, которая сейчас идёт\n/mon,/tue и тд. - вывод расписание по интересующему дню`)
                 break;
-            case '/tod' || '/tod@b3k3rBot':
+            case '/tod@b3k3rBot' || '/tod':
                 td = new Date()
                 getParaByQuery(chatId,{dayofweek:td.getDay()})
                 break;
