@@ -45,6 +45,7 @@ bot.setMyCommands([
 bot.on('message', async msg => {
     const text = msg.text;
     const chatId = msg.chat.id;
+    console.log(msg)
     try{
         switch(text.split('|')[0]) {
             case '/start' || '/start@b3k3rBot':
