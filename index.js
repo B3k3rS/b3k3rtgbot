@@ -330,11 +330,15 @@ function getParaByQuery(chatid,query) {
 
         Para.find(find_opt)
         .then(res => {
-            if (res[0].title != 'Null') { 
-                bot.sendMessage(chatid,`Сейчас идёт пара №${res[0].counter} - [${zvonki[res[0].counter-1][0]}:${zvonki[res[0].counter-1][1]}-${zvonki[res[0].counter-1][2]}:${zvonki[res[0].counter-1][3]}] - ${res[0].title}\nДля -> ( ${getCategory(res[0].category)})\nСсылка -> ${res[0].link}\n`)
-            }
-            else {
-                bot.sendMessage(chatid,`Сейчас нет пары.`)
+            try {
+                if (res[0].title != 'Null') { 
+                    bot.sendMessage(chatid,`Сейчас идёт пара №${res[0].counter} - [${zvonki[res[0].counter-1][0]}:${zvonki[res[0].counter-1][1]}-${zvonki[res[0].counter-1][2]}:${zvonki[res[0].counter-1][3]}] - ${res[0].title}\nДля -> ( ${getCategory(res[0].category)})\nСсылка -> ${res[0].link}\n`)
+                }
+                else {
+                    bot.sendMessage(chatid,`Сейчас нет пары.`)
+                }
+            } catch (error) {
+                console.log(error)
             }
         })
     }
