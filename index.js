@@ -333,6 +333,9 @@ function getParaByQuery(chatid,query) {
             if (res[0].title != 'Null') { 
                 bot.sendMessage(chatid,`Сейчас идёт пара №${res[0].counter} - [${zvonki[res[0].counter-1][0]}:${zvonki[res[0].counter-1][1]}-${zvonki[res[0].counter-1][2]}:${zvonki[res[0].counter-1][3]}] - ${res[0].title}\nДля -> ( ${getCategory(res[0].category)})\nСсылка -> ${res[0].link}\n`)
             }
+            else {
+                bot.sendMessage(chatid,`Сейчас нет пары.`)
+            }
         })
     }
          
@@ -395,9 +398,6 @@ function pariNow(chatid) {
                 now_date.getHours()+3 == zvonki[i][2] && now_date.getMinutes() < zvonki[i][3] 
             ) {
                 getParaByQuery(chatid,{dayofweek:now_date.getDay(), counter:i+1})
-            }
-            else {
-                bot.sendMessage(chatid, "Перемена, зачилься")
             }
         }
     }
