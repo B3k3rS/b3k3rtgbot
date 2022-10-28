@@ -379,8 +379,6 @@ function pariNow(chatid) {
     date_start_year = new Date("2022-09-26")
     week = Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7)
 
-    bot.sendMessage(607387456,`${now_date.getHours()}:${now_date.getMinutes()}`)
-
     if (
         now_date.getHours()+3 < alert_zvonki[0][0] || now_date.getHours()+3 == alert_zvonki[0][0] && now_date.getMinutes() < alert_zvonki[0][0]
     ) {
