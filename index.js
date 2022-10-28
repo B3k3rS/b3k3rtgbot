@@ -333,9 +333,6 @@ function getParaByQuery(chatid,query) {
             if (res[0].title != 'Null') { 
                 bot.sendMessage(chatid,`Сейчас идёт пара №${res[0].counter} - [${zvonki[res[0].counter-1][0]}:${zvonki[res[0].counter-1][1]}-${zvonki[res[0].counter-1][2]}:${zvonki[res[0].counter-1][3]}] - ${res[0].title}\nДля -> ( ${getCategory(res[0].category)})\nСсылка -> ${res[0].link}\n`)
             }
-            else {
-                bot.sendMessage(chatid,'Нет сейчас пары. Зачилься, чумба')
-            }
         })
     }
          
@@ -378,6 +375,9 @@ function pariNow(chatid) {
     date_calc = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate())
     date_start_year = new Date("2022-09-26")
     week = Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7)
+
+    bot.sendMessage(607387456,`${now_date.getHours()}:${now_date.getMinutes()}`)
+
     if (
         now_date.getHours()+3 < alert_zvonki[0][0] || now_date.getHours()+3 == alert_zvonki[0][0] && now_date.getMinutes() < alert_zvonki[0][0]
     ) {
