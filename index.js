@@ -384,20 +384,20 @@ function pariNow(chatid) {
     week = Math.trunc(Math.round((date_calc-date_start_year)/1000/60/60/24+1)/7)
 
     if (
-        now_date.getHours()+3 < alert_zvonki[0][0] || now_date.getHours()+3 == alert_zvonki[0][0] && now_date.getMinutes() < alert_zvonki[0][0]
+        now_date.getHours()+2 < alert_zvonki[0][0] || now_date.getHours()+2 == alert_zvonki[0][0] && now_date.getMinutes() < alert_zvonki[0][0]
     ) {
         bot.sendMessage(chatid,"Время видел? Рано для пар")
     }
     else if (
-        now_date.getHours()+3 > alert_zvonki[alert_zvonki.length-1][0] || now_date.getHours()+3 == alert_zvonki[alert_zvonki.length-1][0] && now_date.getMinutes() > alert_zvonki[alert_zvonki.length-1][0]
+        now_date.getHours()+2 > alert_zvonki[alert_zvonki.length-1][0] || now_date.getHours()+2 == alert_zvonki[alert_zvonki.length-1][0] && now_date.getMinutes() > alert_zvonki[alert_zvonki.length-1][0]
     ) {
         bot.sendMessage(chatid,"Время видел? Поздно для пар")
     }
     else {
         for(i=0;i<alert_zvonki.length;i++) {
             if (
-                now_date.getHours()+3 == zvonki[i][0] && now_date.getMinutes() > zvonki[i][1] ||
-                now_date.getHours()+3 == zvonki[i][2] && now_date.getMinutes() < zvonki[i][3] 
+                now_date.getHours()+2 == zvonki[i][0] && now_date.getMinutes() > zvonki[i][1] ||
+                now_date.getHours()+2 == zvonki[i][2] && now_date.getMinutes() < zvonki[i][3] 
             ) {
                 getParaByQuery(chatid,{dayofweek:now_date.getDay(), counter:i+1})
             }
@@ -417,7 +417,7 @@ function startAlertS() {
 
         for (i=0;i<alert_zvonki.length;i++) {
             if (
-                now_date.getHours()+3 == alert_zvonki[i][0] && now_date.getMinutes() > alert_zvonki[i][1] && now_date.getMinutes() < alert_zvonki[i][1]+5 
+                now_date.getHours()+2 == alert_zvonki[i][0] && now_date.getMinutes() > alert_zvonki[i][1] && now_date.getMinutes() < alert_zvonki[i][1]+5 
             ) {
                 Para.find({dayofweek:now_date.getDay(),counter:i+1,numerator: week%2==0?true:false})
                 .then (para_data => {
